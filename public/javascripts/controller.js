@@ -19,6 +19,7 @@ app.controller('LoginandLogoutController', ['$scope','$http','$location',functio
 			} else {
 			    alert("Your browser doesnt support Web Storage");
 			}
+			alert(localStorage.getItem("username"));
 	    	$scope.UserName="";
 			$scope.Password="";
 			$scope.LoginForm.$setPristine();
@@ -44,6 +45,8 @@ app.controller('LoginandLogoutController', ['$scope','$http','$location',functio
 			} else {
 			    alert("Your browser doesnt support Web Storage");
 			}
+			alert(localStorage.getItem("username"));
+			console.log(localStorage.getItem("username"));
 	    	$scope.SignupUserName="";
 			$scope.SignupPassword="";
 			$scope.SignupForm.$setPristine();
@@ -108,7 +111,6 @@ app.controller('PostsController', ['$scope','$http','$location',function($scope,
 		let tempcomment=$("#text"+event.target.id).val();
 		let username=localStorage.getItem("username", $scope.UserName);
 		$scope.Posts[index].comments.push({comment:tempcomment,username:username});
-		console.log($scope.Posts[index].comments);
 		$http({
 	        url: "https://whispering-waters-22556.herokuapp.com/comments",
 	        method: "POST",
