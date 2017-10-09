@@ -71,7 +71,6 @@ app.controller('PostsController', ['$scope','$http','$location',function($scope,
 	$scope.SearchContent="";
 	$scope.SearchTitle="";
 	$scope.GetPosts=function() {
-		alert(localStorage.getItem("username"));
 		$http({
 	        url: "https://whispering-waters-22556.herokuapp.com/posts",
 	        method: "GET"
