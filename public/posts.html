@@ -19,7 +19,7 @@
 				    <span ng-show="SearchForm.content.$error.required && !SearchForm.content.$pristine" class="help-block">Comment is required</span>
 				</div>
 			  	<button type="submit" ng-click="Search();" class="btn btn-default" ng-disabled="SearchForm.$invalid">Search</button>
-			  	<button type="submit" ng-click="GetPosts()" class="btn btn-default">Clear</button>
+			  	<button type="submit" ng-click="GetPosts()" class="btn btn-default">Get All Posts</button>
 			</form>
 			<div class="col-md-8 center-block posts-section" ng-repeat="post in Posts">
 				<h2>{{post.title}}</h2>
