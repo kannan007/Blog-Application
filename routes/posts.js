@@ -45,10 +45,11 @@ Postrouter.post('/search',(req, res, next) => {
 			}, {
 		  		content: { $like: '%' + req.body.content + '%' }
 			}]},
-		attributes: ["title","content"],
+		attributes: ["id","title","content","createdAt"],
 		include: [
 			{"model": comments, attributes: ["comment","username"]},
-			{"model": postsimages, attributes: ["imagename"]}
+			{"model": postsimages, attributes: ["imagename"]},
+			{"model": users, attributes: ["username"]},
 		]
 	}).then(posts => {
 		res.send(posts);

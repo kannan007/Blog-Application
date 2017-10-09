@@ -136,7 +136,6 @@ app.controller('PostsController', ['$scope','$http','$location',function($scope,
 	    	$scope.Posts=[];
 	    	$scope.SearchForm.$setPristine();
 	    	let temp=response.data;
-	    	console.log(temp);
 	    	temp.forEach((post) => {
 	    		$scope.Posts.push(new postsprototype(post));
 	    	});
