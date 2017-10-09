@@ -1,0 +1,27 @@
+<html ng-app="MyApp">
+	<title>Blog Posts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<body ng-controller="UploadPostsController">
+		<div class="container">
+			<form name="UploadPostsForm" enctype="multipart/form-data">
+				<div class="form-group">
+					<label>Title: </label>
+				    <input type="text" ng-model="TitleName" class="form-control" name="title" required>
+				    <span ng-show="UploadPostsForm.title.$error.required && !UploadPostsForm.title.$pristine" class="help-block">Title is required</span>
+			  	</div>
+			  	<div class="form-group">
+			  		<label>Content: </label>
+				    <textarea ng-model="TitleContent" class="form-control" rows="3" name="content" required></textarea>
+				    <span ng-show="UploadPostsForm.content.$error.required && !UploadPostsForm.content.$pristine" class="help-block">
+				    	Content is Required
+				    </span>
+			  	</div>
+				<div class="form-group">
+					<label>You can add Images if you want to upload maximum is 3 only JPEG/PNG supported</label>
+			    	<input name="file" type="file" multiple>
+			    </div>
+			    <button id="submitbutton" type="submit" ng-click="UploadPosts();" class="btn btn-default" ng-disabled="UploadPostsForm.$invalid">Upload Post</button>
+			</form>
+		</div>
+	</body>
+</html>

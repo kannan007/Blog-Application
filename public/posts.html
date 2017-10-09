@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Blog</title>
+</head>
+<body ng-controller="PostsController">
+	<div class="container posts-page" style="margin-top: 100px;">
+		<div class="row">
+			<form class="form-inline col-md-8 center-block" name="SearchForm">
+				<div class="form-group">
+				    <label  for="title">Title:</label>
+				    <input type="text"  ng-model="SearchTitle" name="title" class="form-control">
+				    <span ng-show="SearchForm.title.$error.required && !SearchForm.title.$pristine" class="help-block">Comment is required</span>
+			  	</div>
+				<div class="form-group">
+				    <label for="content">Content:</label>
+				    <input type="text" ng-model="SearchContent" name="content" class="form-control">
+				    <span ng-show="SearchForm.content.$error.required && !SearchForm.content.$pristine" class="help-block">Comment is required</span>
+				</div>
+			  	<button type="submit" ng-click="Search();" class="btn btn-default" ng-disabled="SearchForm.$invalid">Search</button>
+			  	<button type="submit" ng-click="GetPosts()" class="btn btn-default">Clear</button>
+			</form>
+			<div class="col-md-8 center-block posts-section" ng-repeat="post in Posts">
+				<h2>{{post.title}}</h2>
+				<p class="content">{{post.content}}</p>
+				<div class="col-md-12 image-section" ng-repeat="image in post.images">
+					<img src="./uploads/{{image.imagename}}">
+				</div>
+				<p class="posted-by"><span>~</span> Posted By {{post.user.username}} on {{post.time | date}}</p>
+				<h4>Comments</h4>
+				<ul>
+					<li ng-repeat="comment in post.comments">{{comment.comment}} By <span>{{comment.username}}</span></li>
+				</ul>
+				<form class="login-form" name="CommentsForm" novalidate>
+					<div class="form-group">
+						<input class="form-control" ng-model="Comment" type="text" id="text{{post.id}}" name="comment" placeholder="Add a comment" required>
+						<span ng-show="CommentsForm.comment.$error.required && !CommentsForm.comment.$pristine" class="help-block">
+					    	Comment is required
+					    </span>
+					</div>
+					<button id="{{post.id}}" type="submit" ng-click="AddComment($event,$index);" class="btn btn-default" ng-disabled="CommentsForm.$invalid">Add Comment</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
