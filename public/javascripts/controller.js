@@ -19,7 +19,6 @@ app.controller('LoginandLogoutController', ['$scope','$http','$location',functio
 			} else {
 			    alert("Your browser doesnt support Web Storage");
 			}
-			alert(localStorage.getItem("username"));
 	    	$scope.UserName="";
 			$scope.Password="";
 			$scope.LoginForm.$setPristine();
@@ -40,13 +39,11 @@ app.controller('LoginandLogoutController', ['$scope','$http','$location',functio
 	    .then(function(response) {
 	    	if (typeof(Storage) !== "undefined") {
     			// Store
-			    localStorage.setItem("username", $scope.SingnupUserName);
+			    localStorage.setItem("username", $scope.SignupUserName);
 			    // Retrieve
 			} else {
 			    alert("Your browser doesnt support Web Storage");
 			}
-			alert(localStorage.getItem("username"));
-			console.log(localStorage.getItem("username"));
 	    	$scope.SignupUserName="";
 			$scope.SignupPassword="";
 			$scope.SignupForm.$setPristine();
