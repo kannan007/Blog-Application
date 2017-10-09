@@ -7,7 +7,7 @@ app.controller('LoginandLogoutController', ['$scope','$http','$location',functio
 	$scope.SignupPassword="";
 	$scope.Login=function() {
 		$http({
-	        url: "http://localhost:3000/users/login",
+	        url: "https://localhost:3000/users/login",
 	        method: "POST",
 	        data: {username: $scope.UserName, password:$scope.Password}
 	    })
@@ -32,7 +32,7 @@ app.controller('LoginandLogoutController', ['$scope','$http','$location',functio
 	};
 	$scope.Signup=function() {
 		$http({
-	        url: "http://localhost:3000/users/register",
+	        url: "https://localhost:3000/users/register",
 	        method: "POST",
 	        data: {"username": $scope.SignupUserName, "password":$scope.SignupPassword}
 	    })
@@ -72,7 +72,7 @@ app.controller('PostsController', ['$scope','$http','$location',function($scope,
 	$scope.SearchTitle="";
 	$scope.GetPosts=function() {
 		$http({
-	        url: "http://localhost:3000/posts",
+	        url: "https://localhost:3000/posts",
 	        method: "GET"
 	    })
 	    .then(function(response) {
@@ -91,7 +91,7 @@ app.controller('PostsController', ['$scope','$http','$location',function($scope,
 	$scope.GetPosts();
 	$scope.Logout=function() {
 		$http({
-	        url: "http://localhost:3000/users/logout",
+	        url: "https://localhost:3000/users/logout",
 	        method: "GET"
 	    })
 	    .then(function(response) {
@@ -110,7 +110,7 @@ app.controller('PostsController', ['$scope','$http','$location',function($scope,
 		$scope.Posts[index].comments.push({comment:tempcomment,username:username});
 		console.log($scope.Posts[index].comments);
 		$http({
-	        url: "http://localhost:3000/comments",
+	        url: "https://localhost:3000/comments",
 	        method: "POST",
 	        data: {comment: tempcomment, postid: event.target.id}
 	    })
@@ -126,7 +126,7 @@ app.controller('PostsController', ['$scope','$http','$location',function($scope,
 	};
 	$scope.Search=function() {
 		$http({
-	        url: "http://localhost:3000/posts/search",
+	        url: "https://localhost:3000/posts/search",
 	        method: "POST",
 	        data: {title: $scope.SearchTitle, content: $scope.SearchContent}
 	    })
@@ -167,7 +167,7 @@ app.controller('UploadPostsController', ['$scope','$http','$location',function($
 	var data = new FormData();
 	$scope.UploadPosts=function() {
 		$http({
-	        url: "http://localhost:3000/posts",
+	        url: "https://localhost:3000/posts",
 	        method: "POST",
 	        data: {title: $scope.TitleName, content:$scope.TitleContent}
 	    })
@@ -178,7 +178,7 @@ app.controller('UploadPostsController', ['$scope','$http','$location',function($
 			if($("input[type='file']")[0].files.length>0) {
 				$.ajax({
 			        // Your server script to process the upload
-			        url: ' http://localhost:3000/postimages',
+			        url: ' https://localhost:3000/postimages',
 			        type: 'POST',
 			        // Form data
 			        data: data,
