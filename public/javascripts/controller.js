@@ -7,7 +7,7 @@ app.controller('LoginandLogoutController', ['$scope','$http','$location',functio
 	$scope.SignupPassword="";
 	$scope.Login=function() {
 		$http({
-	        url: "https://whispering-waters-22556.herokuapp.com/users/login",
+	        url: "/users/login",
 	        method: "POST",
 	        data: {username: $scope.UserName, password:$scope.Password}
 	    })
@@ -32,7 +32,7 @@ app.controller('LoginandLogoutController', ['$scope','$http','$location',functio
 	};
 	$scope.Signup=function() {
 		$http({
-	        url: "https://whispering-waters-22556.herokuapp.com/users/register",
+	        url: "/users/register",
 	        method: "POST",
 	        data: {"username": $scope.SignupUserName, "password":$scope.SignupPassword}
 	    })
